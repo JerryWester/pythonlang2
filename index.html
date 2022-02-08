@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="utf-8">
+    <title>This is Python</title>
+    <link rel="icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico">
+</head>
+<body>
+    <h1 id="python-logo"><img src="https://python.org/static/img/python-logo.png" alt="python™"></h1>
+    <div id="main_header">
+        <h1>Why python is a bad language</h1>
+        <small>Feedback: <a href="mailto:feedback@pythonlang.org">feedback@pythonlang.org</a><br></small>
+        <a href="https://github.com/JerryWester/pythonlang2"><img src="https://img.shields.io/badge/Source-GitHub-green"></a>
+    </div>
+    <hr id="sep">
+    <div id="content">
+        <h2>Weird Syntax</h2>
+        <hr>
+        <ul>
+            <li>It is hard to read, because it is missing semicolons and braces.
+            <li>Indentation as a syntactical element is just silly. This takes away freedom from the developer and makes
+                the code less readable without any benefit.
+            <li>Indentation-dependant scopes make multiple statements on one line look horrible.
+            <li>Doc comments
+            <ul>
+                <li>They use triple quotes which doesn't make sense for a comment.
+                <li>They go under what they are documenting, which looks wrong and is very unusual.
+                <li>They are technically not comments, which is a terrible idea.
+                <li>They are accessible at runtime, but shouldn't since this encourages spaghetti code.
+            </ul>
+            <li>The <code>def</code> keyword does not imply a function, so one may think it is declaring a variable, or
+                something else.
+            <li>Strange naming
+            <ul>
+                <li><code>__init__</code> or <code>__add__</code> looks like an internal function. That these define
+                    operators looks like someone was too lazy to do this properly (yet again!).
+                <li>Exception handling using <code>raise</code> and <code>except</code> instead of the usual
+                    <code>throw</code> and <code>catch</code>. There is literally no point to do this, and it
+                    confuses users.
+                <li>Same goes for <code>elif</code> instead of <code>else if</code>. This is just pointless, and
+                    again looks like a lazy implementation.
+            </ul>
+            <li>Strange symbols
+            <ul>
+                <li><code>not</code>, <code>and</code> and <code>or</code> instead of the more conventional and
+                    cleaner looking <code>!</code>, <code>&&</code> and <code>||</code>.
+            </ul>
+            <li>Normal <code>if</code> and <code>else</code> statements are not expressions. If they were, the
+                additional ternary operator syntax would be completely redundant, and the code would be cleaner.
+            <li>The syntax for inheritance looks really confusing. <code>Foo(Bar)</code> looks like <code>Foo</code> has
+                a constructor that takes a <code>Bar</code> as an argument, and not like <code>Foo</code> extends
+                <code>Bar</code>.
+            <li>For some reason, the <code>pass</code> keyword exists. Why can't we just leave the block empty or omit
+                the <code>:</code>? Yet another lazy implementation!
+            <li>The recently added <code>:=</code> (assignment expression) operator exists, instead of simply making the
+                normal assignment (<code>=</code>) an expression.
+            <li><code>True</code> and <code>False</code> are capitalized which is unconventional and annoying.
+            <li>Functions can have named arguments like <code>foo(bar=baz)</code> which looks strange, and instead
+                functions should just take dictionaries instead like <code>foo({bar: baz})</code>
+        </ul>
+        <h2>Lacking Features</h2>
+        <hr>
+        <ul>
+            <li>Lambdas are a poorly implemented afterthought.
+            <li>There is absolutely no <code>switch</code> statement or anything along those lines, leading to
+                absolutely <strong>HUGE</strong> <code>elif</code> blocks!
+        </ul>
+        <h2>Intepreter</h2>
+        <hr>
+        <ul>
+            <li>Intepreters lead to runtime errors which could otherwise be detected at compile time. This often causes
+                bad errors to make it into production due to untested edge cases.
+            <li><strong>Very bad</strong> performance.
+            <li>Python is hard to package. Of course tools exist that can do it, but they are slow and large as they
+                always include the interpreter as opposed to compiling the code or using some sort of faster
+                intermediate language. Packaged python also includes the source code, which may be undesirable.
+        </ul>
+        <h2>Dynamic Typing</h2>
+        <hr>
+        <ul>
+            <li>Passing an invalid type into a function may cause unpredictable behaviour. Manual type checks are
+                annoying, and type hints are still just hints.
+            <li>It is often unclear what type a function is expecting, thus it can be hard to know how to call it,
+                especially if it is undocumented.
+            <li>A function can return whatever type it wants, so it is hard to work with and unpredictable.
+            <li>Variables don't need to be declared. This leads to many issues, such as accidentally overwriting other
+                variables with the same name, or typos going undetected.
+            <li>A variable's type may be changed after its assignment, making it harder to work with.
+        </ul>
+        <h2>Poorly done Classes</h2>
+        <hr>
+        <ul>
+            <li>The <code>self</code> parameter being passed into functions explicitly is pointless boilerplate. Instead
+                it should just be there implicitly, and static functions should be declared with a keyword such as
+                <code>static</code>.
+            <li>Fields do not need to be declared. This leads to issues mentioned before. It also makes the data a class
+                stores undefined, making it harder to work with. It is recommended to declare fields, but unfortunately
+                not enforced.
+            <li>Enums are basically just classes, and are yet another lazy afterthought.
+        </ul>
+        <h2>Wide Spread Because Of The Wrong Reason</h2>
+        <hr>
+        <ul>
+            <li>Python is seen as "the beginner's language", and it really should not be.
+            <li>As said earlier on this website, Python has numerous issues that stop the newbie from quickly getting
+                used to other PLs, by lacking basic functions.
+            <li>Python should only be used if you wanna handicap yourself into an inferior PL, just to see what you can
+                do. No more, no less.
+        </ul>
+        <h2>Other Issues</h2>
+        <hr>
+        <ul>
+            <li>Strings can be evaluated as code, also encouraging spaghetti code.
+            <li>Doc comments are available at runtime using <code>help(element)</code>, and they should not be, because
+                this too encourages spaghetti code.
+            <li>The command line REPL prints <code>Use exit() or Ctrl-Z plus Return to exit</code> for no reason,
+                instead of simply exiting.
+        </ul>
+        <h2>Conclusion</h2>
+        <hr>
+        <p>Python is a bad programming language that no one should use. Please don't hesitate to quit using programs
+            made in Python. If you continue using them, it will motivate the Python devs to keep making this garbage,
+            plus programs written in Python are usually <strong>VERY</strong> slow. And NEVER, EVER, EVER, EVER use
+            Python in your own programming shenanigans. It's YOUR project. You have full control over it. Why even use
+            Python if that's the case?
+        <p>And, one more thing:
+        <p>Please spread the site so more people know the truth. It would mean the world to me. Thanks.
+    </div>
+</body>
+</html>
